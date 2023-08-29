@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
     const calcularButton = document.getElementById("calcularButton");
     const horasInput = document.getElementById("horas");
     const pagoInput = document.getElementById("pago");
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const resultadoISSSSpan = document.getElementById("resultadoISSS");
     const salarioNETOSpan = document.getElementById("salarioNETO");
 
-    calcularButton.addEventListener("click", function() {
+    calcularButton.addEventListener("click", () => {
         const horasTrabajadas = parseFloat(horasInput.value);
         const pagoPorHora = parseFloat(pagoInput.value);
         const salario = horasTrabajadas * pagoPorHora;
@@ -34,4 +34,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-
