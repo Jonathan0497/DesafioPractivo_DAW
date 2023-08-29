@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const horasTrabajadas = parseFloat(horasInput.value);
         const pagoPorHora = parseFloat(pagoInput.value);
         const salario = horasTrabajadas * pagoPorHora;
-        let descuentoRenta = 0; // Inicializado a 0
+        let descuentoRenta = 0;
 
         if (salario >= 472.01 && salario <= 895.24) {
             descuentoRenta = (salario * (10 / 100)) + 17.67;
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             resultadoRentaspan.textContent = `Renta: $ ${descuentoRenta.toFixed(2)}`;
 
             const salarioNETOValue = salario - (resultadoISSSValue + resultadoAFP + descuentoRenta);
-            salarioNETOSpan.textContent = `Salario Neto: $ ${salarioNETOValue}`;
+            salarioNETOSpan.textContent = `Salario Neto: $ ${salarioNETOValue.toFixed(2)}`;
 
             nombreEmpleadoSpan.textContent = `Nombre del Empleado: ${nombreEmpleadoInput.value}`;
             cargoSpan.textContent = `Cargo que ejerce: ${cargoInput.value}`;
