@@ -14,15 +14,31 @@ document.addEventListener("DOMContentLoaded", () => {
         const horasTrabajadas = parseFloat(horasInput.value);
         const pagoPorHora = parseFloat(pagoInput.value);
         const salario = horasTrabajadas * pagoPorHora;
+        let descuentoRenta = 0; // Inicializado a 0
+
+        if (salario >= 472.01 && salario <= 895.24) {
+            descuentoRenta = salario * (10 / 100);
+        } 
+
+        if (salario >= 895.25 && salario <= 2038.10) {
+            descuentoRenta = salario * (20 / 100);
+        }  
+        
+        if (salario >= 2038.11) {
+            descuentoRenta = salario * (30 / 100);
+        }
 
         if (!isNaN(horasTrabajadas) && !isNaN(pagoPorHora)) {
-            const resultado = salario * (7.25 / 100);
-            resultadoScript.textContent = `AFP: $ ${resultado}`;
+            const resultadoAFP = salario * (7.25 / 100);
+            resultadoScript.textContent = `AFP: $ ${resultadoAFP}`;
 
-            const resultadoISSSValue = salario * (3 / 100);
+            let resultadoISSSValue = salario * (3 / 100);
+            if (resultadoISSSValue > 30) {
+                resultadoISSSValue = 30;
+            }
             resultadoISSSSpan.textContent = `ISSS: $ ${resultadoISSSValue}`;
 
-            const salarioNETOValue = salario - (resultadoISSSValue + resultado);
+            const salarioNETOValue = salario - (resultadoISSSValue + resultadoAFP + descuentoRenta); // Incluido descuentoRenta
             salarioNETOSpan.textContent = `Salario Neto: $ ${salarioNETOValue}`;
 
             nombreEmpleadoSpan.textContent = `Nombre del Empleado: ${nombreEmpleadoInput.value}`;
@@ -34,3 +50,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
