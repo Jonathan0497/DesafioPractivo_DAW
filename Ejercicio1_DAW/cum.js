@@ -2,18 +2,23 @@ let notas = [];
 let cum;
 
 while (true) {
-    var nombreMateria = prompt('Introduzca el nombre de la materia:','');
-    var notaFinal = prompt('Introduzca la nota final de esta materia: ','');
-    var UV = prompt('Introduzca las unidades valorativas (UV): ','');
+    let nombreMateria = prompt('Introduzca el nombre de la materia:', '');
+    let notaFinal = parseFloat(prompt('Introduzca la nota final de esta materia:', ''));
+    let UV = parseFloat(prompt('Introduzca las unidades valorativas (UV):', ''));
 
+    // Validación de entradas
+    if (isNaN(notaFinal) || isNaN(UV) || notaFinal < 0 || notaFinal > 10 || UV <= 0) {
+        alert("Por favor, introduzca valores válidos.");
+        continue;
+    }
 
-    notas.push({nombreMateria, notaFinal : parseFloat(notaFinal), UV: parseFloat(UV)});
+    notas.push({ nombreMateria, notaFinal, UV });
 
     const tableBody = document.querySelector("#Tabla tbody");
     const newRow = document.createElement("tr");
 
-    newRow.innerHTML =  '<td>'+nombreMateria+'</td>'+
-                        '<td>'+notaFinal+'</td>'+
+    newRow.innerHTML = '<td>'+ nombreMateria +'</td>'+
+                        '<td>' + notaFinal + '</td>' +
                         '<td>'+UV+'</td>';
 
     tableBody.appendChild(newRow);
@@ -25,8 +30,8 @@ while (true) {
 }
 
 cum = calcularCum(notas);
-var resultadoNota = document.getElementById('nota');
-resultadoNota.innerHTML = '<h2>Notas: '+ cum.toFixed(2) +'</h2>';
+const resultadoNota = document.getElementById('nota');
+resultadoNota.innerHTML = `<h2>Notas: ${cum.toFixed(2)}</h2>`;
 
 function calcularCum(notas) {
     let suma = 0;
@@ -37,6 +42,3 @@ function calcularCum(notas) {
     }
     return suma / uvsuma;
 }
-
-
-
