@@ -38,15 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 resultadoISSSValue = 30;
             }
             resultadoISSSSpan.textContent = `ISSS: $ ${resultadoISSSValue}`;
-            resultadoRentaspan.textContent += `Renta: $ ${descuentoRenta.toFixed(2)}`;
+            resultadoRentaspan.textContent = `Renta: $ ${descuentoRenta.toFixed(2)}`;
 
-            const salarioNETOValue = salario - (resultadoISSSValue + resultadoAFP + descuentoRenta); // Incluido descuentoRenta
+            const salarioNETOValue = salario - (resultadoISSSValue + resultadoAFP + descuentoRenta);
             salarioNETOSpan.textContent = `Salario Neto: $ ${salarioNETOValue}`;
 
             nombreEmpleadoSpan.textContent = `Nombre del Empleado: ${nombreEmpleadoInput.value}`;
             cargoSpan.textContent = `Cargo que ejerce: ${cargoInput.value}`;
         } else {
-            resultadoScript.textContent = "Ingrese valores válidos para las horas y el pago por hora.";
+            resultadoScript.textContent = "Ingrese valores validos para las horas y el pago por hora.";
             resultadoISSSSpan.textContent = "";
             salarioNETOSpan.textContent = "";
         }
