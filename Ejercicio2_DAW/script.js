@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nombreEmpleadoSpan = document.getElementById("nombreEmpleadoSpan");
     const cargoSpan = document.getElementById("cargoSpan");
     const resultadoISSSSpan = document.getElementById("resultadoISSS");
+    const resultadoRentaspan = document.getElementById("resultadoRenta");
     const salarioNETOSpan = document.getElementById("salarioNETO");
 
     calcularButton.addEventListener("click", () => {
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 resultadoISSSValue = 30;
             }
             resultadoISSSSpan.textContent = `ISSS: $ ${resultadoISSSValue}`;
+            resultadoRentaspan.textContent += `Renta: $ ${descuentoRenta.toFixed(2)}`;
 
             const salarioNETOValue = salario - (resultadoISSSValue + resultadoAFP + descuentoRenta); // Incluido descuentoRenta
             salarioNETOSpan.textContent = `Salario Neto: $ ${salarioNETOValue}`;
