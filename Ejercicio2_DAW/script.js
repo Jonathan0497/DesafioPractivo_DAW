@@ -18,15 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
         let descuentoRenta = 0; // Inicializado a 0
 
         if (salario >= 472.01 && salario <= 895.24) {
-            descuentoRenta = salario * (10 / 100);
+            descuentoRenta = (salario * (10 / 100)) + 17.67;
         } 
 
         if (salario >= 895.25 && salario <= 2038.10) {
-            descuentoRenta = salario * (20 / 100);
+            descuentoRenta = (salario * (20 / 100)) + 60.00;
         }  
         
         if (salario >= 2038.11) {
-            descuentoRenta = salario * (30 / 100);
+            descuentoRenta = (salario * (30 / 100)) + 288.57;
         }
 
         if (!isNaN(horasTrabajadas) && !isNaN(pagoPorHora)) {
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (resultadoISSSValue > 30) {
                 resultadoISSSValue = 30;
             }
-            resultadoISSSSpan.textContent = `ISSS: $ ${resultadoISSSValue}`;
+            resultadoISSSSpan.textContent = `ISSS: $ ${resultadoISSSValue.toFixed(2)}`;
             resultadoRentaspan.textContent = `Renta: $ ${descuentoRenta.toFixed(2)}`;
 
             const salarioNETOValue = salario - (resultadoISSSValue + resultadoAFP + descuentoRenta);
